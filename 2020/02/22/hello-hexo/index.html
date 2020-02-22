@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>hello-hexo | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1、CSRF是什么 CSRF(Cross Site Request Forgery)，跨站点请求伪造 挟制用户在当前已登录的Web应用程序上执行非本意的操作的攻击方法 2、CSRF原理 攻击者通过一些技术手段欺骗用户的浏览器去访问一个自己曾经认证过的网站并执行一些操作（如发邮件，发消息，甚至财产操作如转账和购买商品）。由于浏览器曾经认证过，所以被访问的网站会认为是真正的用户操作而去执行   登录受">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hello-hexo">
+<meta property="og:url" content="http://yoursite.com/2020/02/22/hello-hexo/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1、CSRF是什么 CSRF(Cross Site Request Forgery)，跨站点请求伪造 挟制用户在当前已登录的Web应用程序上执行非本意的操作的攻击方法 2、CSRF原理 攻击者通过一些技术手段欺骗用户的浏览器去访问一个自己曾经认证过的网站并执行一些操作（如发邮件，发消息，甚至财产操作如转账和购买商品）。由于浏览器曾经认证过，所以被访问的网站会认为是真正的用户操作而去执行   登录受">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/images/image-20200216081602833.png">
+<meta property="article:published_time" content="2020-02-22T13:48:22.671Z">
+<meta property="article:modified_time" content="2020-02-22T14:00:41.649Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/image-20200216081602833.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-hello-hexo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/22/hello-hexo/" class="article-date">
+  <time datetime="2020-02-22T13:48:22.671Z" itemprop="datePublished">2020-02-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      hello-hexo
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1、CSRF是什么</p>
+<p>CSRF(Cross Site Request Forgery)，跨站点请求伪造</p>
+<p>挟制用户在当前已登录的Web应用程序上执行非本意的操作的攻击方法</p>
+<p>2、CSRF原理</p>
+<p>攻击者通过一些技术手段欺骗用户的浏览器去访问一个自己曾经认证过的网站并执行一些操作（如发邮件，发消息，甚至财产操作如转账和购买商品）。由于浏览器曾经认证过，所以被访问的网站会认为是真正的用户操作而去执行</p>
+<p><img src="/images/image-20200216081602833.png" alt="image-20200216081602833"></p>
+<ul>
+<li>登录受信任网站A，并在本地生成Cookie。</li>
+<li>在不登出A的情况下，访问危险网站B</li>
+</ul>
+<p>3、防御措施</p>
+<ul>
+<li><p>Referer Check</p>
+<p>检查请求是否来自合法的源</p>
+<p>局限性：完全依赖浏览器发送正确的Referer字段</p>
+</li>
+<li><p>限制GET请求，GET请求无法获取到关键敏感信息，遵循Restful的设计规范，无法执行修改操作</p>
+</li>
+<li><p>加验证码</p>
+<p>对于涉及敏感数据的请求，强制用户必须通过验证码进行二次认证，验证码可以很好防御CSRF攻击，但是出于用户体验考虑，不能给所有操作都加上验证码，只能作为一种辅助手段</p>
+</li>
+<li><p>Anti CSRF Token</p>
+<p>服务端生成CsrfToken，放在浏览器的cookie中<br>前端读取cookie中的CsrfToken值，在某个DOM组件中存储这个CsrfToken，如果统一通过ajax提交请求，在header中添加这个CsrfToken<br>服务端验证token是否与cookie中的token一致，一致为合法请求，不一致为非法请求</p>
+</li>
+<li><p>Samesite Cookie Attribute</p>
+<p><a href="http://www.ruanyifeng.com/blog/2019/09/cookie-samesite.html" target="_blank" rel="noopener">阮一峰</a></p>
+<p>目前 Samesite 的可选值为 Lax, Strict 或 None。对于 Strict 值，用来阻止浏览器在任何跨站的情况下发送 cookie，只有当前网页的 URL 与请求目标一致，才会带上，所以用户体验可能会遭受影响，特别是你的后端服务在不同的域下</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/02/22/hello-hexo/" data-id="ck6xoae3i000150vbgtgf24uw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/02/22/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/02/22/hello-hexo/">hello-hexo</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/22/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
